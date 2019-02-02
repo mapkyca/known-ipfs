@@ -1,0 +1,5 @@
+{
+    "require": {
+        "cloutier/php-ipfs-api": "^0.0.6"
+    }
+}

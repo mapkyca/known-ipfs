@@ -1,0 +1,47 @@
+[
+    {
+        "name": "cloutier/php-ipfs-api",
+        "version": "0.0.6",
+        "version_normalized": "0.0.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cloutier/php-ipfs-api.git",
+            "reference": "4b60da3adf76105bd1650d24e277a482809664eb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cloutier/php-ipfs-api/zipball/4b60da3adf76105bd1650d24e277a482809664eb",
+            "reference": "4b60da3adf76105bd1650d24e277a482809664eb",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.3.0"
+        },
+        "time": "2016-09-11T15:34:38+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Cloutier\\PhpIpfsApi\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Vincent Cloutier",
+                "email": "vincent@cloutier.co",
+                "homepage": "http://vincent.cloutier.co",
+                "role": "Developer"
+            }
+        ],
+        "description": "A client library for the IPFS API",
+        "homepage": "https://github.com/cloutier/php-ipfs-api",
+        "keywords": [
+            "ipfs"
+        ]
+    }
+]
