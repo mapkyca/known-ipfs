@@ -1,6 +1,6 @@
 <?php
 
-namespace IdnoPlugins\Text {
+namespace IdnoPlugins\IPFS {
     
     class Main extends \Idno\Common\Plugin
     {
