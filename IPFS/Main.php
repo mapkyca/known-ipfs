@@ -19,6 +19,12 @@ namespace IdnoPlugins\IPFS {
                 )
             );
         }
+	
+	function registerEventHooks() {
+	    
+	    \Idno\Core\site()->filesystem = new \IdnoPlugins\IPFS\IPFSFileSystem();
+
+	}
 
     }
 
