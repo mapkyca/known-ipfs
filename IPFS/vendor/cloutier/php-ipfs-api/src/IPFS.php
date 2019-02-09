@@ -65,15 +65,39 @@ class IPFS {
 
 		return $data;
 	}
+	
+	public function pinRm ($hash) {
+		
+		$ip = $this->gatewayIP;
+		$port = $this->gatewayApiPort;
 
-    public function version () {
-        
-        $ip = $this->gatewayIP;
-        $port = $this->gatewayApiPort;
-        $response = $this->curl("http://$ip:$port/api/v0/version");
-        $data = json_decode($response, TRUE);
-        return $data["Version"];
-    }
+		$response = $this->curl("http://$ip:$port/api/v0/pin/rm/$hash");
+		$data = json_decode($response, TRUE);
+
+		return $data;
+	}
+	
+	public function version () {
+		
+		$ip = $this->gatewayIP;
+		$port = $this->gatewayApiPort;
+
+		$response = $this->curl("http://$ip:$port/api/v0/version");
+		$data = json_decode($response, TRUE);
+
+		return $data['Version'];
+	}
+	
+	public function id () {
+		
+		$ip = $this->gatewayIP;
+		$port = $this->gatewayApiPort;
+
+		$response = $this->curl("http://$ip:$port/api/v0/id");
+		$data = json_decode($response, TRUE);
+
+		return $data;
+	}
 
 	private function curl ($url, $data = "") {
 		$ch = curl_init();
@@ -87,7 +111,7 @@ class IPFS {
 		if ($data != "") {
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data; boundary=a831rwxi1a3gzaorw1w2z49dlsor')); 
 			curl_setopt($ch, CURLOPT_POST, 1);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, "--a831rwxi1a3gzaorw1w2z49dlsor\r\nContent-Type: application/octet-stream\r\nContent-Disposition: file; \r\n\r\n" . $data . "    a831rwxi1a3gzaorw1w2z49dlsor");
+			curl_setopt($ch, CURLOPT_POSTFIELDS, "--a831rwxi1a3gzaorw1w2z49dlsor\r\nContent-Type: application/octet-stream\r\nContent-Disposition: file; \r\n\r\n" . $data . "\r\n--a831rwxi1a3gzaorw1w2z49dlsor");
 		}
 
 		$output = curl_exec($ch);
