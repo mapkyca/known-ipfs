@@ -18,9 +18,14 @@ namespace IdnoPlugins\IPFS {
 
 	public function getBytes() {
 	    
-	    $client = IPFSFileSystem::client();
-	    
-	    return $client->size($this->metadata['_ipfs_file_id']);
+	    $contents = '';
+            $handle = $this->getResource();
+            while (!feof($handle)) {
+                $contents .= fread($handle, 8192);
+            }
+            fclose($handle);
+
+            return $contents;
 	}
 
 	public function getFilename() {
@@ -38,9 +43,9 @@ namespace IdnoPlugins\IPFS {
 	}
 
 	public function getSize() {
-	    if (!empty($this->metadata['length'] )) {
-		return $this->metadata['length'] ;
-	    }
+	    $client = IPFSFileSystem::client();
+	    
+	    return $client->size($this->metadata['_ipfs_file_id']);
 	}
 
 	public function passThroughBytes() {
