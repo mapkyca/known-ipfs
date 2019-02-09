@@ -39,6 +39,12 @@ Unfortunately, the version that is currently available via composer has a small 
 
 I have [filed an issue](https://github.com/cloutier/php-ipfs-api/issues/12) with the author, but the composer package is updated to what's currently on github, running a ```composer install``` will likely break the plugin.
 
+## Still to do
+
+This plugin functionally does not change how files are actually stored - a local object is still created , although the data itself is stored elsewhere. 
+
+Could this be done more efficiently? For example, could a direct link be provided? Likely this would require some core hooks - for example a getFileURL() on file objects.
+
 ## See
 
 * Author: [Marcus Povey](https://www.marcus-povey.co.uk)
