@@ -35,6 +35,11 @@ namespace IdnoPlugins\IPFS {
 		$file->_id = $_id;
 		$file->_ipfs_file_id = $metadata['_ipfs_file_id'];
 		$file->metadata = $metadata;
+		
+		// Compatibility with LocalFileSystem and Mongo
+		$file->file = $metadata;
+		$file->file['_id'] = $_id;
+		$file->file['length'] = $metadata['length'];
 
 		return $file;
 	    } catch (\Exception $e) {
