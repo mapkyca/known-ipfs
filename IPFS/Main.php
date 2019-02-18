@@ -7,7 +7,11 @@ namespace IdnoPlugins\IPFS {
 
         function registerPages()
         {
-	    
+	    // Register admin settings
+	    \Idno\Core\site()->addPageHandler('admin/ipfs', '\IdnoPlugins\IPFS\Pages\Admin');
+
+	    // Add menu items to account & administration screens
+	    \Idno\Core\site()->template()->extendTemplate('admin/menu/items', 'admin/ipfs/menu');
         }
 
         function registerTranslations()
