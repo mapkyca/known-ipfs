@@ -17,5 +17,8 @@
     "require": {
         "php": ">=7.0",
         "cloutier/php-ipfs-api": "^0.0.6"
+    },
+    "extra": {
+        "installer-name": "IPFS"
     }
 }
