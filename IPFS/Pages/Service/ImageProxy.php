@@ -1,17 +1,9 @@
 <?php
 
-namespace IdnoPlugins\IPFS\Service {
+namespace IdnoPlugins\IPFS\Pages\Service {
 
     class ImageProxy extends \Idno\Pages\Service\Web\ImageProxy
     {
-
-        protected function getCache()
-        {
-
-	    return false;
-
-        }
-
 
         /**
          * Delete any cached content
@@ -74,6 +66,8 @@ namespace IdnoPlugins\IPFS\Service {
 
             try {
 		$filesystem = \Idno\Core\Idno::site()->filesystem();
+		$cache = $this->getCache();
+		
 		if (!($filesystem instanceof \IdnoPlugins\IPFS\IPFSFileSystem)) {
 		    throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_("Registered filesystem is not an IPFSFileSystem"));
 		}
@@ -99,7 +93,7 @@ namespace IdnoPlugins\IPFS\Service {
 
                     if ($url = \Idno\Core\Webservice::base64UrlDecode($url)) {
 
-                        $meta = \IdnoPlugins\IPFS\Entities\ProxiedFile::getByCacheKey(sha1("{$url}{$proxyparams}").'_meta');
+                        $meta = unserialize($cache->load(sha1("{$url}{$proxyparams}").'_meta'));
                         if (!empty($meta)) {
                             // Found metadata
 
@@ -116,9 +110,9 @@ namespace IdnoPlugins\IPFS\Service {
 
                                     \Idno\Core\Idno::site()->logging()->debug("Returning cached image $url");
 
-                                    $fileid = \IdnoPlugins\IPFS\Entities\ProxiedFile::getByCacheKey(sha1("{$url}{$proxyparams}"));
+                                    $fileid = $cache->load(sha1("{$url}{$proxyparams}"));
 
-				    if ($file = $filestore->findOne($fileid)) {
+				    if ($file = $filesystem->findOne($fileid)) {
 					if ($file instanceof \Idno\Files\CDNStorable) {
 				
 					    $forward_url = $file->getCDNStoredURL();
@@ -136,7 +130,9 @@ namespace IdnoPlugins\IPFS\Service {
                             } else {
                                 \Idno\Core\Idno::site()->logging()->debug("Image $url has expired");
                             }
-                        }
+                        } else {
+			    \Idno\Core\Idno::site()->logging()->debug("Image $url not found in cache");
+			}
 
                         // Not found, or expired
                         \Idno\Core\Idno::site()->logging()->debug("Attempting to fetch $url");
@@ -244,17 +240,15 @@ namespace IdnoPlugins\IPFS\Service {
                         \Idno\Core\Idno::site()->logging()->debug("Storing " . $size . ' bytes of content.');
                         \Idno\Core\Idno::site()->logging()->debug('Meta: ' . print_r($meta, true));
 
-			
+
 			// Store content
-			$filesystem->storeContent($content, [
-			    'filename'  => "{$url}{$proxyparams}",
-			    'mime_type' => 'text/plain'
+			$content_id = $filesystem->storeContent($content, [
+			    'filename'  => sha1("{$url}{$proxyparams}"),
+			    'mime_type' => $meta['mime']
 			]);
-			
-			$filesystem->storeContent(serialize($meta), [
-			    'filename'  => "{$url}{$proxyparams}".'_meta',
-			    'mime_type' => 'text/plain'
-			]);
+			    
+			$cache->store(sha1("{$url}{$proxyparams}"), $content_id);
+                        $cache->store(sha1("{$url}{$proxyparams}").'_meta', serialize($meta));
 			
                         \Idno\Core\Idno::site()->logging()->debug("Returning image $url");
 

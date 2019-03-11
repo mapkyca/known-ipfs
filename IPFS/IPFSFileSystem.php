@@ -49,7 +49,7 @@ namespace IdnoPlugins\IPFS {
 	    return false;
 	}
 
-	public function storeFile($file_path, $metadata, $options) {
+	public function storeFile($file_path, $metadata, $options = []) {
 
 	    if (file_exists($file_path)) {
 		
@@ -88,7 +88,8 @@ namespace IdnoPlugins\IPFS {
 		$config->IPFS = [
 		    'host' => 'localhost',
 		    'port' => 8080,
-		    'apiport' => 5001
+		    'apiport' => 5001,
+		    'use_cdn' => false
 		];
 	    }
 	    
@@ -108,6 +109,45 @@ namespace IdnoPlugins\IPFS {
 		self::$client = new IPFS($config->IPFS['host'], $config->IPFS['port'], $config->IPFS['apiport']);
 
 	    return self::$client;
+	}
+
+	/**
+	 * Store content from memory
+	 * @param type $content
+	 * @param type $metadata
+	 * @param type $options
+	 * @return boolean
+	 * @throws \RuntimeException
+	 */
+	public function storeContent($content, $metadata, $options = array()) {
+	    if (!empty($content)) {
+		
+		$client = self::client();
+		
+		// Store actual data
+		$file_id = $client->add($content);				
+		
+		if (empty($file_id))
+		    throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_ ('There was a problem writing the file contents (%d bytes), is the server up?', [strlen($content)]));
+		
+		// Add id to metadata
+		$metadata['_ipfs_file_id'] = $file_id;
+		
+		// Store the file size
+		$metadata['length'] = strlen($content);
+		
+		// Store metadata and get ID
+		$id = $client->add( json_encode($metadata) );
+		
+		if (empty($id))
+		    throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_ ('There was a problem writing metadata to IPFS'));
+		
+		return $id;
+	    } else {
+		throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_ ('You\'re trying to store empty content'));
+	    }
+	    
+	    return false;
 	}
 
     }

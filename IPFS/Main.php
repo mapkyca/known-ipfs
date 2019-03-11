@@ -28,12 +28,15 @@ namespace IdnoPlugins\IPFS {
 	    
 	    // Create file system
 	    \Idno\Core\site()->filesystem = new \IdnoPlugins\IPFS\IPFSFileSystem();
-
-	    // Override the image proxy
-	    \Idno\Core\Idno::site()->hijackPageHandler('/service/web/imageproxy/([^\/]+)/?', '\IdnoPlugins\IPFS\Service\ImageProxy', true);
-            \Idno\Core\Idno::site()->hijackPageHandler('/service/web/imageproxy/([^\/]+)/([0-9]+)/?', '\IdnoPlugins\IPFS\Service\ImageProxy', true); // With scale
-            \Idno\Core\Idno::site()->hijackPageHandler('/service/web/imageproxy/([^\/]+)/([0-9]+)/([^\/]+)/?', '\IdnoPlugins\IPFS\Service\ImageProxy', true); // With scale, with transform
 	    
+	    $config = IPFSFileSystem::getConfig();
+
+	    if ($config->IPFS['use_cdn'] == 'Yes') { 
+		// Override the image proxy
+		\Idno\Core\Idno::site()->addPageHandler('/service/web/imageproxy/([^\/]+)/?', '\IdnoPlugins\IPFS\Pages\Service\ImageProxy', true);
+		\Idno\Core\Idno::site()->addPageHandler('/service/web/imageproxy/([^\/]+)/([0-9]+)/?', '\IdnoPlugins\IPFS\Pages\Service\ImageProxy', true); // With scale
+		\Idno\Core\Idno::site()->addPageHandler('/service/web/imageproxy/([^\/]+)/([0-9]+)/([^\/]+)/?', '\IdnoPlugins\IPFS\Pages\Service\ImageProxy', true); // With scale, with transform
+	    }
 	}
 
     }

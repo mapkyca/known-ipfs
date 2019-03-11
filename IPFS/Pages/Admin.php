@@ -25,11 +25,13 @@
                 $host = $this->getInput('host', 'localhost');
                 $port = $this->getInput('port', 8080);
 		$apiport = $this->getInput('apiport', 5001);
+		$use_cdn = $this->getInput('use_cdn');
 		
                 \Idno\Core\site()->config->config['IPFS'] = array(
                     'host' => $host,
                     'port' => $port,
-		    'apiport' => $apiport
+		    'apiport' => $apiport,
+		    'use_cdn' => $use_cdn
                 );
 		
                 \Idno\Core\site()->config()->save();
