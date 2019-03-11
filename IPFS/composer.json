@@ -1,5 +1,21 @@
 {
+    "type": "known-plugin",
+    "description": "Adds IPFS support to Known",
+    "homepage": "https://www.marcus-povey.co.uk",
+    "keywords": [
+        "known",
+        "plugin",
+        "ipfs"
+    ],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Marcus Povey",
+            "email": "marcus@marcus-povey.co.uk"
+        }
+    ],
     "require": {
+        "php": ">=7.0",
         "cloutier/php-ipfs-api": "^0.0.6"
     }
 }

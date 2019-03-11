@@ -1,2 +1,4 @@
 nbproject/
 IPFS/composer.lock
+IPFS/vendor/
+vendor/

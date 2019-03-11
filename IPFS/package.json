@@ -1,7 +1,14 @@
 {
-  "name": "IPFS",
-  "version": "0.1",
-  "devDependencies": {
-    "grunt": "^0.4.5"
-  }
+    "name": "IPFS",
+    "version": "0.1",
+    "license": "GPL-2.0",
+    "repository": {
+	"type": "git",
+	"url": "git@github.com:mapkyca/Known-IPFS.git",
+	"owner": "mapkyca",
+	"repo": "known-ipfs"
+    },
+    "devDependencies": {
+      "grunt": "^0.4.5"
+    }
 }
