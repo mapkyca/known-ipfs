@@ -26,8 +26,14 @@ namespace IdnoPlugins\IPFS {
 	
 	function registerEventHooks() {
 	    
+	    // Create file system
 	    \Idno\Core\site()->filesystem = new \IdnoPlugins\IPFS\IPFSFileSystem();
 
+	    // Override the image proxy
+	    \Idno\Core\Idno::site()->hijackPageHandler('/service/web/imageproxy/([^\/]+)/?', '\IdnoPlugins\IPFS\Service\ImageProxy', true);
+            \Idno\Core\Idno::site()->hijackPageHandler('/service/web/imageproxy/([^\/]+)/([0-9]+)/?', '\IdnoPlugins\IPFS\Service\ImageProxy', true); // With scale
+            \Idno\Core\Idno::site()->hijackPageHandler('/service/web/imageproxy/([^\/]+)/([0-9]+)/([^\/]+)/?', '\IdnoPlugins\IPFS\Service\ImageProxy', true); // With scale, with transform
+	    
 	}
 
     }
