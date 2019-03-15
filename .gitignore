@@ -1,4 +1,6 @@
-nbproject/
-IPFS/composer.lock
-IPFS/vendor/
-vendor/
+/nbproject/
+/composer.lock
+/vendor/
+/node_modules/
+/package-lock.json
+/composer.phar

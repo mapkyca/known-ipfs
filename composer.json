@@ -1,6 +1,7 @@
 {
     "type": "known-plugin",
     "description": "Adds IPFS support to Known",
+    "version": "0.0.1",
     "homepage": "https://www.marcus-povey.co.uk",
     "keywords": [
         "known",
@@ -20,5 +21,8 @@
     },
     "extra": {
         "installer-name": "IPFS"
+    },
+    "require-dev": {
+        "mapkyca/known-language-tools": "dev-master"
     }
 }
