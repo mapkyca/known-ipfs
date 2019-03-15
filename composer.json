@@ -1,4 +1,5 @@
 {
+    "name": "mapkyca/known-ipfs",
     "type": "known-plugin",
     "description": "Adds IPFS support to Known",
     "version": "0.0.1",
