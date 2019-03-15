@@ -1,0 +1,52 @@
+#: ./Pages/Service/ImageProxy.php:50
+msgid "There was a problem decoding the url"
+msgstr ""
+
+#: ./Pages/Service/ImageProxy.php:54
+msgid "No url specified"
+msgstr ""
+
+#: ./Pages/Service/ImageProxy.php:72
+msgid "Registered filesystem is not an IPFSFileSystem"
+msgstr ""
+
+#: ./Pages/Service/ImageProxy.php:208
+msgid "Could not save temporary file"
+msgstr ""
+
+#: ./Pages/Service/ImageProxy.php:239
+msgid "Looks like something went wrong, image was zero bytes big!"
+msgstr ""
+
+#: ./Pages/Admin.php:38
+msgid "Your IPFS settings were saved."
+msgstr ""
+
+#: ./templates/default/admin/ipfs.tpl.php:16
+msgid "Configure your IPFS server."
+msgstr ""
+
+#: ./templates/default/admin/ipfs.tpl.php:27
+msgid "IPFS Server"
+msgstr ""
+
+#: ./templates/default/admin/ipfs.tpl.php:40
+msgid "Port"
+msgstr ""
+
+#: ./templates/default/admin/ipfs.tpl.php:53
+msgid "API Port"
+msgstr ""
+
+#: ./templates/default/admin/ipfs.tpl.php:66
+msgid "Use server as CDN"
+msgstr ""
+
+#: ./templates/default/admin/ipfs.tpl.php:74
+msgid "IPFS can be used to proxy images. For this to work, you need to be using a public server"
+msgstr ""
+
+#: ./templates/default/admin/ipfs.tpl.php:89
+msgid "Save settings"
+msgstr ""
+

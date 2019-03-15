@@ -23,6 +23,6 @@
         "installer-name": "IPFS"
     },
     "require-dev": {
-        "mapkyca/known-language-tools": "dev-master"
+        "mapkyca/known-language-tools": "^1.0"
     }
 }

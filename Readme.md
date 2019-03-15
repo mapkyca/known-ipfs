@@ -9,8 +9,12 @@ Step Zero: Install an IPFS server. This is a little bit out of scope, but I used
 Once you've done that:
 
 * Download the latest version of Known. I recommend that you either use the [GitHub](https://github.com/idno/known) version or the [Unofficial packages](https://www.marcus-povey.co.uk/known) available from my website.
-* Copy the **IPFS** directory into your ```IdnoPlugins``` directory.
+* Create an **IPFS** directory in your ```IdnoPlugins``` directory, and copy these files into it.
 * Activate it from the Admin panel.
+
+or
+
+* ``` composer require mapkyca/known-ipfs ```
 
 ## Configuration
 
