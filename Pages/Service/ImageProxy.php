@@ -113,7 +113,7 @@ namespace IdnoPlugins\IPFS\Pages\Service {
                                     $fileid = $cache->load(sha1("{$url}{$proxyparams}"));
 
 				    if ($file = $filesystem->findOne($fileid)) {
-					if ($file instanceof \Idno\Files\CDNStorable) {
+					if (($file instanceof \Idno\Files\CDNStorable) || ($file instanceof \Idno\Files\CDNStoreable)) {
 				
 					    $forward_url = $file->getCDNStoredURL();
 					    \Idno\Core\Idno::site()->logging()->debug("Forwarding to $forward_url");
