@@ -4,7 +4,7 @@ namespace IdnoPlugins\IPFS {
 
     require_once(dirname(__FILE__) . '/vendor/autoload.php');
 
-    class IPFSFile extends \Idno\Files\File implements \Idno\Files\CDNStoreable {
+    class IPFSFile extends \Idno\Files\File implements \Idno\Files\CDNStorable {
 
 	protected function getURL() {
 	    $config = IPFSFileSystem::getConfig();
