@@ -26,9 +26,6 @@ namespace IdnoPlugins\IPFS {
 	
 	function registerEventHooks() {
 	    
-	    // Create file system
-	    \Idno\Core\site()->filesystem = new \IdnoPlugins\IPFS\IPFSFileSystem();
-	    
 	    $config = IPFSFileSystem::getConfig();
 
 	    if ($config->IPFS['use_cdn'] == 'Yes') { 
