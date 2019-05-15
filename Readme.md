@@ -4,7 +4,7 @@ This plugin adds IPFS file support to Known.
 
 ## Installation
 
-Step Zero: Install an IPFS server. This is a little bit out of scope, but I used [go-ipfsp](https://docs.ipfs.io/introduction/install/) during development.
+Step Zero: Install an IPFS server. This is a little bit out of scope, but I used [go-ipfs](https://docs.ipfs.io/introduction/install/) during development.
 
 Once you've done that:
 
