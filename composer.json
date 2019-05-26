@@ -2,7 +2,7 @@
     "name": "mapkyca/known-ipfs",
     "type": "known-plugin",
     "description": "Adds IPFS support to Known",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "homepage": "https://www.marcus-povey.co.uk",
     "keywords": [
         "known",

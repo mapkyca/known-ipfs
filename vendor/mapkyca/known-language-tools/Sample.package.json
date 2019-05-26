@@ -1,0 +1,8 @@
+{
+  "name": "MyPlugin",
+  "version": "1.0.0",
+  "description": "This is an example plugin package.json",
+  "devDependencies": {
+    "grunt": "^1.0.3"
+  }
+}
