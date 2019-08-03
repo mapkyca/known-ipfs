@@ -18,8 +18,7 @@
     ],
     "require": {
         "php": ">=7.1",
-        "cloutier/php-ipfs-api": "^0.0.6",
-        "composer/installers": "dev-master"
+        "cloutier/php-ipfs-api": "^0.0.6"
     },
     "extra": {
         "installer-name": "IPFS"
