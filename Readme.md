@@ -1,4 +1,4 @@
-# Known IPFS Support (experimental)
+# Known IPFS Support (experimental) [![DOI](https://zenodo.org/badge/170312056.svg)](https://zenodo.org/badge/latestdoi/170312056)
 
 This plugin adds IPFS file support to Known.
 
